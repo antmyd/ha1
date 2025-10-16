@@ -104,4 +104,41 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after getting the square root of twenty five")
+    void squareRoot25() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("if you press the equals button again on the calculator after getting a result, the same result is displayed again, and nothing new is added to it.")
+    void pessingEqualsKeyAgain() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        calc.pressEqualsKey();
+
+        String expected1 = expected;
+        String actual1 = calc.readScreen();
+
+        assertEquals(expected1, actual1);
+    }
+
 }
