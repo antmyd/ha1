@@ -130,15 +130,16 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "4";
-        String actual = calc.readScreen();
+        String expectedFirst = "4";
+        String actualFirst = calc.readScreen();
+        assertEquals(expectedFirst, actualFirst);
 
         calc.pressEqualsKey();
 
-        String expected1 = expected;
-        String actual1 = calc.readScreen();
+        String expectedSecond = "4";
+        String actualSecond = calc.readScreen();
 
-        assertEquals(expected1, actual1);
+        assertEquals(expectedSecond, actualSecond);
     }
 
 }

@@ -150,6 +150,11 @@ public class Calculator {
      * Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
+        if (latestOperation.isEmpty()) {
+            return;
+        }
+
         var result = switch (latestOperation) {
             case "+" ->
                 latestValue + Double.parseDouble(screen);
@@ -162,6 +167,7 @@ public class Calculator {
             default ->
                 throw new IllegalArgumentException();
         };
+
         screen = Double.toString(result);
         if (screen.equals("Infinity")) {
             screen = "Error";
